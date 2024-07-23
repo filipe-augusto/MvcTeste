@@ -11,8 +11,9 @@ namespace MvcTeste.Controllers
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-    } 
-
+    }
+    [RoutePrefix("teste")]
+    [Route("{action=Dados}")]
     public class TesteController : Controller
     {
         // GET: Teste
@@ -68,6 +69,17 @@ namespace MvcTeste.Controllers
         {
             
             return Json(aluno, JsonRequestBehavior.AllowGet);
+        }
+        [Route("minharota/{id:int}")]
+        public string action1(int id)
+        {
+            return "OK! CHEGUEI NA ROTA!";
+        }
+
+        [Route("~/rotaignorada/{id:int}")]
+        public string action2(int id)
+        {
+            return "OK! CHEGUEI NA ROTA!";
         }
     }
 }
