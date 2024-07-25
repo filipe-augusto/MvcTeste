@@ -81,5 +81,15 @@ namespace MvcTeste.Controllers
         {
             return "OK! CHEGUEI NA ROTA!";
         }
+        [Route("rota/{categoria:maxlength(3)}")]
+        public string action2(string categoria)
+        {
+            return "OK! CHEGUEI NA ROTA!" + categoria;
+        }
+        [Route("rota2/{categoria:minlength(3)}")]
+        public string action3(string categoria)
+        {
+            return "OK! CHEGUEI NA ROTA!" + categoria;
+        }
     }
 }
