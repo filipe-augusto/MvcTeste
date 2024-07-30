@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcTeste.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -52,13 +53,13 @@ namespace MvcTeste.Controllers
 
             return Json(new { Id = id, Nome = nome }, JsonRequestBehavior.AllowGet);
         }
-
+        [LogActionFiltercs()]
         public JsonResult obj()
         {
             var autor = new Aluno() { Id = 1, Nome = "Filipe" };
             return  Json(autor, JsonRequestBehavior.AllowGet);
         }
-
+      
         public JsonResult obj1(int id, string nome)
         {
             var autor = new Aluno() { Id = id, Nome = nome };
