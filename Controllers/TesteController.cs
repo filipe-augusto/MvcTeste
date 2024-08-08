@@ -1,4 +1,6 @@
 ﻿using MvcTeste.Filters;
+using MvcTeste.Models;
+using MvcTeste.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcTeste.Controllers
 {
-    public class Aluno
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-    }
+
     [RoutePrefix("teste")]
     [Route("{action=Dados}")]
     public class TesteController : Controller
@@ -23,9 +21,40 @@ namespace MvcTeste.Controllers
             return View();
         }
 
+
+        public ActionResult Create()
+        {
+            var cursos = RetornaCursos();
+            var model = new AlunoViewModel
+            {
+                Nome = "",
+                Senha = "",
+                IsAtivo = false,
+                IdCurso = 0,
+                DataCadastro = DateTime.Now,
+                CursoOptions = new SelectList(cursos, "Id", "NomeCurso")
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Create(Aluno aluno)
+        {
+            return View();
+        }
+
         public int numero()
         {
             return 1;
+        }
+        private List<Curso> RetornaCursos()
+        {
+            return new List<Curso>()
+            {
+                new Curso() {Id = 1, NomeCurso = "Matematica", CargaHoraria = 10},
+                new Curso() {Id = 2, NomeCurso = "Portugues", CargaHoraria = 10},
+                new Curso() {Id = 3, NomeCurso = "Informatica", CargaHoraria = 8},
+                new Curso() {Id = 4, NomeCurso = "Primeiros socorros", CargaHoraria = 4},
+            };
         }
 
         public ViewResult Dados()
