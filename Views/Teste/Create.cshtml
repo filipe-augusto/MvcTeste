@@ -1,9 +1,15 @@
-﻿@model  MvcTeste.ModelView.AlunoViewModel
+﻿@model  MvcTeste.ModelView.CreateAlunoViewModel
 @{
     ViewBag.Title = "Create";
 }
 
-<form>
+@helper MinhaFuncao(string nome)
+{
+    <text>o nome informado é @nome</text>
+}
+@using (Html.BeginForm())
+{
+
     <div class="form-group">
         @Html.LabelFor(model => model.Nome)
         @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
@@ -26,7 +32,11 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.IdCurso)
-        @Html.DropDownListFor(m => m.IdCurso, Model.CursoOptions,"Selecione uma opção...", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(m => m.IdCurso, Model.CursoOptions, "Selecione uma opção...", new { htmlAttributes = new { @class = "form-control" } })
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+}
+<hr/>
+<p>
+    @MinhaFuncao("Filipe Augusto")
+</p>

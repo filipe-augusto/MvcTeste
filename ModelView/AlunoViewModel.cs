@@ -5,9 +5,9 @@ using System.Web.Mvc;
 
 namespace MvcTeste.ModelView
 {
-    public class AlunoViewModel
+    public class CreateAlunoViewModel
     {
-        public AlunoViewModel() { }
+        public CreateAlunoViewModel() { }
 
         public SelectList CursoOptions { get; set; }
         public int Id { get; set; }
